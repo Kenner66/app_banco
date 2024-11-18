@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.utils.timezone import now
+ 
+#Modelo que representa un usuario en el sistema bancario.
+#Este usuario puede ser cualquier cliente (estudiante, profesor, etc.).
 
 class UsuarioBanco(models.Model):
-    """
-    Modelo que representa un usuario en el sistema bancario.
-    Este usuario puede ser cualquier cliente (estudiante, profesor, etc.).
-    """
+   
     nombre = models.CharField(max_length=100)  # Nombre completo del usuario
     email = models.EmailField(unique=True)  # Email único del usuario
     identificacion = models.CharField(max_length=50, unique=True)  # DNI o identificación única
@@ -18,10 +18,8 @@ class UsuarioBanco(models.Model):
         return f"{self.nombre} ({self.identificacion})"
 
 
+#   Modelo que representa una transacción bancaria.
 class Transaccion(models.Model):
-    """
-    Modelo que representa una transacción bancaria.
-    """
     ESTADOS = [
         ('Pendiente', 'Pendiente'),
         ('Aprobado', 'Aprobado'),
